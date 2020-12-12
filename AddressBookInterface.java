@@ -9,4 +9,6 @@ public interface AddressBookInterface {
     public HashMap<Long, AddressBookContactDetails> updateValue(long key, AddressBookContactDetails AddressBook);
 	
     public void deleteAddress(long key);
+    
+    public void sortByfirstName();
 }

@@ -69,4 +69,19 @@ public class AddressBookOperations implements AddressBookInterface {
 		}
 
 	}
+	@Override
+	public void sortByfirstName() {
+		List<AddressBookContactDetails> value = new ArrayList<>();
+		if (addressBookContainer != null) {
+			value.addAll(addressBookContainer.values());
+			Collections.sort(value, new Comparator<AddressBookContactDetails>() {
+				public int compare(AddressBookContactDetails Person1, AddressBookContactDetails Person2) {
+					return Person1.getfirstName().compareTo(Person2.getfirstName());
+				}
+			});
+		}
+		for (AddressBookContactDetails valueList : value) {
+			System.out.println(valueList);
+		}
+	}
 }
