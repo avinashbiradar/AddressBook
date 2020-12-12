@@ -57,4 +57,16 @@ public class AddressBookOperations implements AddressBookInterface {
 		}
 		return addressBookContainer;
 	}
+	@Override
+	public void deleteAddress(long key) {
+
+		if (addressBookContainer.containsKey(key) == false) {
+			System.out.println("Invalid Key !!!!!!!");
+		} else {
+			addressBookContainer.remove(key);
+			System.out.println(key + " Deleted Successfully");
+
+		}
+
+	}
 }
