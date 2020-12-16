@@ -13,4 +13,8 @@ public interface AddressBookInterface {
     public void sortByfirstName();
     
     public void sortByZipCode();
+    
+    public void searchByCity(String city, AddressBookContactDetails addressBook);
+    
+    public void searchByState(String inputState, AddressBookContactDetails addressBook);
 }

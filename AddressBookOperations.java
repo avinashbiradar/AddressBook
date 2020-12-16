@@ -5,14 +5,14 @@ public class AddressBookOperations implements AddressBookInterface {
 	HashMap<Long, AddressBookContactDetails> addressBookContainer = new HashMap<Long, AddressBookContactDetails>();
 	Scanner input = new Scanner(System.in);
 
-	public HashMap<Long, AddressBookContactDetails> save(long phoneNumber, AddressBookContactDetails newAddressBook) {
-		addressBookContainer.put(phoneNumber, newAddressBook);
+	public HashMap<Long, AddressBookContactDetails> save(long phoneNumber, AddressBookContactDetails AddressBook) {
+		addressBookContainer.put(phoneNumber, AddressBook);
 		return addressBookContainer;
 	}
 
 	@Override
 	public AddressBookContactDetails newAddressBook() {
-		AddressBookContactDetails newAddressBook = new AddressBookContactDetails();
+		AddressBookContactDetails AddressBook = new AddressBookContactDetails();
 		System.out.println("Enter the First Name");
 		String firstName = input.next();
 		System.out.println("Enter the Last Name");
@@ -27,14 +27,14 @@ public class AddressBookOperations implements AddressBookInterface {
 		int zip = input.nextInt();
 		System.out.println("Enter the Phone number");
 		long phone = input.nextLong();
-		newAddressBook.setfirstName(firstName);
-		newAddressBook.setlastName(lastName);
-		newAddressBook.setAddress(address);
-		newAddressBook.setCity(city);
-		newAddressBook.setState(state);
-		newAddressBook.setZip(zip);
-		newAddressBook.setPhone(phone);
-		return newAddressBook;
+		AddressBook.setfirstName(firstName);
+		AddressBook.setlastName(lastName);
+		AddressBook.setAddress(address);
+		AddressBook.setCity(city);
+		AddressBook.setState(state);
+		AddressBook.setZip(zip);
+		AddressBook.setPhone(phone);
+		return AddressBook;
 	}
 	@Override
 	public void printAllDetails() {
@@ -47,12 +47,12 @@ public class AddressBookOperations implements AddressBookInterface {
 		}
 	}
 	@Override
-	public HashMap updateValue(long key, AddressBookContactDetails newaddressBook) {
+	public HashMap updateValue(long key, AddressBookContactDetails addressBook) {
 
 		if (addressBookContainer.containsKey(key) == false) {
 			System.out.println("Key Not Found");
 		} else if (addressBookContainer.containsKey(key) == true) {
-			addressBookContainer.put(key, newaddressBook);
+			addressBookContainer.put(key, addressBook);
 			System.out.println("Values Updated");
 		}
 		return addressBookContainer;
@@ -101,4 +101,24 @@ public class AddressBookOperations implements AddressBookInterface {
 			System.out.println(sortedValue);
 		}
 	}
+	
+	public void searchByCity(String icity, AddressBookContactDetails addressBook) {
+	
+			Set keys = addressBookContainer.keySet();
+			Iterator iterate = keys.iterator();
+			Collection<AddressBookContactDetails> getValues = addressBookContainer.values();
+			iterate = getValues.iterator();
+			while (iterate.hasNext()) 
+			{
+				System.out.println(addressBook.getCity() +"  "+ icity );
+				if (addressBook.getCity().equals(icity)) 
+				 { 
+				    System.out.println("Details are : "+ addressBook.getfirstName()+"  "+addressBook.getlastName()+"  "+addressBook.getState()+"  "+addressBook.getPhone()+" "+addressBook.getZip());
+			     }
+				iterate.hasNext();
+				break;
+		     }
+				
+	        }
 }
+
